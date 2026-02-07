@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+# 📝 Todo App (Server Actions Only)
+
+A modern **full-stack Todo application** built with **Next.js App Router**, using **Server Actions as the only backend layer** — no REST or API routes.
+
+The app focuses on **type safety, clean UI, and correct server/client separation**.
+
+---
+
+## 🚀 Features
+
+* ✅ Create and delete todos using **Server Actions**
+* 📌 Priority support (e.g. High)
+* 📂 Filter todos by:
+
+  * All
+  * Active
+  * Completed
+* ⚡ Automatic UI updates via cache invalidation
+* 🧠 Clear separation of:
+
+  * Server logic (Server Actions)
+  * Client UI state
+* 🎨 Clean UI with Shadcn UI + Tailwind CSS
+* 🔐 Runtime + compile-time validation with Zod
+
+---
+
+## 🛠 Tech Stack
+
+* **Framework**: Next.js (App Router)
+* **Language**: TypeScript
+* **Styling**: Tailwind CSS
+* **UI Components**: Shadcn UI
+* **Server Actions**: Next.js Server Actions (no API routes)
+* **Server State**: TanStack Query
+* **Client State**: Zustand
+* **Validation**: Zod
+* **Database**: MongoDB
+* **ODM**: Mongoose
+
+---
+
+## 📸 Screenshot
+
+![Todo App Screenshot](./public/screenshot.png)
+
+---
+---
+
+## 🔄 Data Flow (Server Actions Only)
+
+1. User interacts with UI (create / delete todo)
+2. Client triggers a **Server Action**
+3. Server Action:
+
+   * Connects to MongoDB
+   * Validates input using Zod
+   * Updates database via Mongoose
+4. TanStack Query mutation runs
+5. `queryClient.invalidateQueries()` is called
+6. Todos are automatically refetched
+7. UI updates without manual state syncing 🎉
+
+---
+
+## 🧠 Why Server Actions (No API Routes)
+
+* ❌ No REST endpoints
+* ❌ No manual request handling
+* ❌ No duplicated backend logic
+
+✅ Type-safe server logic
+✅ Less boilerplate
+✅ Better App Router integration
+✅ Cleaner mental model
+
+---
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/anuj2731997/TodoApp.git
+cd todoApp
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2️⃣ Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun install
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### 3️⃣ Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create `.env`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4️⃣ Run the development server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+bun run dev
+```
+
+Open 👉 `http://localhost:3000`
+
+---
+
+## 🧪 Validation & Type Safety
+
+* Zod handles runtime validation
+* `z.infer` keeps TypeScript types in sync
+* No duplicate interfaces or schemas
+
+---
+
+## 🧠 State Management Strategy
+
+| Type         | Tool           | Responsibility                        |
+| ------------ | -------------- | ------------------------------------- |
+| Server State | TanStack Query | Data fetching, caching, revalidation  |
+| Client State | Zustand        | Filters, UI state, local interactions |
+
+---
+
+## ✨ UI & Design
+
+* Consistent theme tokens (`muted`, `muted-foreground`)
+* Accessible components from Shadcn UI
+* Responsive and minimal layout
+
+---
+## 👨‍💻 Author
+
+Built with ❤️ by **Anuj**
+
+> This project demonstrates **modern Next.js architecture using Server Actions instead of traditional APIs**.
+
+---
+
