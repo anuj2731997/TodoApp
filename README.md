@@ -45,10 +45,9 @@ The app focuses on **type safety, clean UI, and correct server/client separation
 
 ## 📸 Screenshot
 
-![Todo App Screenshot](./public/screenshot.png)
+![Todo App Screenshot](./public/sample.png)
 
----
----
+
 
 ## 🔄 Data Flow (Server Actions Only)
 
